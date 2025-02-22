@@ -45,3 +45,35 @@ footer {
 body {
     background-color: #6F7673; /* Dunkles Grau */
 }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap');
+
+body {
+    font-family: 'Noto Naskh Arabic', sans-serif;
+    background-color: #f8f9fa;
+    text-align: center;
+    direction: rtl;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #218838;
+}
