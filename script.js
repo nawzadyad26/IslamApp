@@ -1,41 +1,48 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const suraAuswahl = document.getElementById("sura-auswahl");
-    const verseContainer = document.getElementById("verse-container");
+    const surahSelect = document.getElementById("surahSelect");
+    const surahName = document.getElementById("surahName");
+    const versesContainer = document.getElementById("verses");
 
-    fetch("quran.json")
+    // API mit Koran auf Kurdisch
+    const apiURL = "https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/editions/kur-mokhtarsaeedraman.json";
+
+    fetch(apiURL)
         .then(response => response.json())
-        .then(data => {
-            data.suras.forEach((sura, index) => {
-                let option = document.createElement("option");
-                option.value = index;
-                option.textContent = `${sura.name} (${sura.translation})`;
-                suraAuswahl.appendChild(option);
+        .then(quranData => {
+            const surahs = {};
+            quranData.quran.forEach(ayah => {
+                if (!surahs[ayah.surah]) {
+                    surahs[ayah.surah] = [];
+                }
+                surahs[ayah.surah].push(`${ayah.ayah}: ${ayah.text}`);
             });
 
-            ladeSura(0, data);
+            // Fülle das Dropdown mit Suren-Namen
+            Object.keys(surahs).forEach(surahNumber => {
+                let option = document.createElement("option");
+                option.value = surahNumber;
+                option.textContent = `سورة ${surahNumber}`;
+                surahSelect.appendChild(option);
+            });
+
+            // Standardmäßig erste Surah laden
+            loadSurah(1, surahs);
+
+            // Event Listener für Dropdown
+            surahSelect.addEventListener("change", function () {
+                loadSurah(this.value, surahs);
+            });
+
         });
 
-    suraAuswahl.addEventListener("change", function () {
-        fetch("quran.json")
-            .then(response => response.json())
-            .then(data => {
-                ladeSura(this.value, data);
-            });
-    });
+    function loadSurah(surahNumber, surahs) {
+        surahName.textContent = `سورة ${surahNumber}`;
+        versesContainer.innerHTML = "";
 
-    function ladeSura(index, data) {
-        verseContainer.innerHTML = "";  
-        let sura = data.suras[index];
-
-        if (!sura.verses || sura.verses.length === 0) {
-            verseContainer.innerHTML = "<p>Keine Verse verfügbar</p>";
-            return;
-        }
-
-        sura.verses.forEach(verse => {
+        surahs[surahNumber].forEach(ayah => {
             let p = document.createElement("p");
-            p.innerHTML = `<strong>${verse.number}.</strong> ${verse.text} <br> <em>${verse.translation}</em>`;
-            verseContainer.appendChild(p);
+            p.textContent = ayah;
+            versesContainer.appendChild(p);
         });
     }
 });
