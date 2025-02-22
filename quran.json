@@ -5,12 +5,15 @@
             "translation": "Eröffnung",
             "verses": [
                 { "number": 1, "text": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", "translation": "Im Namen Allahs, des Allerbarmers, des Barmherzigen." },
-                { "number": 2, "text": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", "translation": "Alles Lob gehört Allah, dem Herrn der Welten," },
-                { "number": 3, "text": "الرَّحْمَٰنِ الرَّحِيمِ", "translation": "dem Allerbarmer, dem Barmherzigen," },
-                { "number": 4, "text": "مَالِكِ يَوْمِ الدِّينِ", "translation": "dem Herrscher am Tage des Gerichts." },
-                { "number": 5, "text": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ", "translation": "Dir allein dienen wir, und zu Dir allein flehen wir um Hilfe." },
-                { "number": 6, "text": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ", "translation": "Leite uns den geraden Weg," },
-                { "number": 7, "text": "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ", "translation": "den Weg derer, denen Du Gnade erwiesen hast, nicht derer, die Deinen Zorn erregt haben, und nicht der Irrenden." }
+                { "number": 2, "text": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", "translation": "Alles Lob gehört Allah, dem Herrn der Welten," }
+            ]
+        },
+        {
+            "name": "البقرة",
+            "translation": "Die Kuh",
+            "verses": [
+                { "number": 1, "text": "الم", "translation": "Alif-Lam-Mim." },
+                { "number": 2, "text": "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِلْمُتَّقِينَ", "translation": "Dies ist das Buch, an dem kein Zweifel ist. Eine Rechtleitung für die Gottesfürchtigen," }
             ]
         }
     ]
