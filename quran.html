@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قورئان</title>
+    <title>Quran auf Kurdisch</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
     <nav>
         <a href="index.html">🏠 ماڵەوە</a>
-        <a href="quran.html">📖 قورئان</a>
-        <a href="#">🕋 نوێژ</a>
-        <a href="#">⚙️ دانان</a>
+        <a href="#">📖 قورئان</a>
+        <a href="#">🕋 دووعاکان</a>
+        <a href="#">⚙️ دانانەوە</a>
     </nav>
 
-    <h1>📖 قورئانی پیرۆز</h1>
-    <div id="quran-container">
-        <p>تکایە چاوەڕێ بکە... بار دەکرێت</p>
-    </div>
+    <h1>📖 قورئان بە زمانی کوردی</h1>
+
+    <label for="sura-auswahl">سورە هەڵبژێرە:</label>
+    <select id="sura-auswahl"></select>
+
+    <h2 id="sura-name"></h2>
+    <div id="verse-container"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
