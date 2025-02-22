@@ -1,39 +1,16 @@
 {
     "suras": [
         {
-            "nummer": 1,
             "name": "الفاتحة",
-            "transliteration": "Al-Fātiḥa",
-            "übersetzung": "Die Eröffnung",
-            "verse": [
-                {
-                    "nummer": 1,
-                    "arabisch": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
-                    "kurdisch": "بەناوی خودای بەخشنده و میهرەبان"
-                },
-                {
-                    "nummer": 2,
-                    "arabisch": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
-                    "kurdisch": "سوپاس بۆ خودای پروردگاری جیهانیان"
-                }
-            ]
-        },
-        {
-            "nummer": 2,
-            "name": "البقرة",
-            "transliteration": "Al-Baqara",
-            "übersetzung": "Die Kuh",
-            "verse": [
-                {
-                    "nummer": 1,
-                    "arabisch": "الم",
-                    "kurdisch": "ئەلێف، لام، میم"
-                },
-                {
-                    "nummer": 2,
-                    "arabisch": "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ هُدًى لِلْمُتَّقِينَ",
-                    "kurdisch": "ئەمەوە کتێبێکی بەردەقینە، کە هێدایەتە بۆ پارێزگاکان"
-                }
+            "translation": "Eröffnung",
+            "verses": [
+                { "number": 1, "text": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", "translation": "Im Namen Allahs, des Allerbarmers, des Barmherzigen." },
+                { "number": 2, "text": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", "translation": "Alles Lob gehört Allah, dem Herrn der Welten," },
+                { "number": 3, "text": "الرَّحْمَٰنِ الرَّحِيمِ", "translation": "dem Allerbarmer, dem Barmherzigen," },
+                { "number": 4, "text": "مَالِكِ يَوْمِ الدِّينِ", "translation": "dem Herrscher am Tage des Gerichts." },
+                { "number": 5, "text": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ", "translation": "Dir allein dienen wir, und zu Dir allein flehen wir um Hilfe." },
+                { "number": 6, "text": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ", "translation": "Leite uns den geraden Weg," },
+                { "number": 7, "text": "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ", "translation": "den Weg derer, denen Du Gnade erwiesen hast, nicht derer, die Deinen Zorn erregt haben, und nicht der Irrenden." }
             ]
         }
     ]
