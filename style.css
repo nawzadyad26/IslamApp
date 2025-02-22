@@ -1,17 +1,19 @@
 /* Allgemeine Stile */
 body {
     font-family: Arial, sans-serif;
-    background-color: #F4F3EC; /* Helles Beige für eine ruhige Optik */
-    color: #333;
     text-align: center;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
 
 /* Navigation */
 nav {
-    background-color: #008080; /* Islamisches Grün */
+    background: #0275d8;
     padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 nav a {
@@ -19,50 +21,55 @@ nav a {
     text-decoration: none;
     font-size: 18px;
     padding: 10px 15px;
-    margin: 0 10px;
     border-radius: 5px;
+    transition: background 0.3s;
 }
 
 nav a:hover {
-    background-color: #006666; /* Dunkleres Grün beim Hover */
+    background: #025aa5;
 }
 
-/* Hauptüberschrift */
+/* Hauptüberschriften */
 h1 {
-    color: #008080;
+    color: #333;
     margin-top: 20px;
 }
 
-/* Allgemeine Absätze */
-p {
-    font-size: 18px;
-    margin: 10px;
+/* Quran-Überschrift */
+h2 {
+    color: #555;
 }
 
-/* Buttons */
-button {
-    background-color: #008080;
-    color: white;
-    border: none;
-    padding: 10px 20px;
+/* Auswahlbox für Suren */
+#sura-auswahl {
+    padding: 10px;
     font-size: 16px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    cursor: pointer;
 }
 
-button:hover {
-    background-color: #006666;
+/* Verse-Container */
+#verse-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: inline-block;
+    text-align: right; /* Für arabischen Text */
 }
 
-/* Quran-Seite */
-.quran-container {
-    background-color: white;
-    padding: 20px;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Verse-Stile */
+#verse-container p {
+    font-size: 18px;
+    line-height: 1.6;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#verse-container p:last-child {
+    border-bottom: none;
 }
 
 /* Footer */
@@ -70,7 +77,8 @@ footer {
     background-color: #333;
     color: white;
     padding: 10px;
-    position: absolute;
+    text-align: center;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
