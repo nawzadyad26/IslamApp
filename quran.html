@@ -3,58 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قورئانی پیرۆز</title>
+    <title>قورئان</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <nav>
         <a href="index.html">🏠 ماڵەوە</a>
         <a href="quran.html">📖 قورئان</a>
         <a href="#">🕋 نوێژ</a>
-        <a href="#">⚙️ ڕێکخستن</a>
+        <a href="#">⚙️ دانان</a>
     </nav>
 
     <h1>📖 قورئانی پیرۆز</h1>
-
-    <select id="surahSelect">
-        <option value="">سورەتێک هەڵبژێرە</option>
-    </select>
-
-    <div id="quran-content"></div>
-
-    <script>
-        async function loadSurahs() {
-            const response = await fetch("https://api.alquran.cloud/v1/surah");
-            const data = await response.json();
-            const select = document.getElementById("surahSelect");
-
-            data.data.forEach(surah => {
-                const option = document.createElement("option");
-                option.value = surah.number;
-                option.textContent = `${surah.number}. ${surah.name}`;
-                select.appendChild(option);
-            });
-        }
-
-        async function loadSurah(number) {
-            if (!number) return;
-            const response = await fetch(`https://api.quran.sutanlab.id/surah/${number}`);
-            const data = await response.json();
-            const contentDiv = document.getElementById("quran-content");
-            contentDiv.innerHTML = `<h2>${data.data.name.transliteration.id}</h2>`;
-
-            data.data.verses.forEach(verse => {
-                const p = document.createElement("p");
-                p.textContent = `${verse.number.inSurah}. ${verse.text.arab}`;
-                contentDiv.appendChild(p);
-            });
-        }
-
-        document.getElementById("surahSelect").addEventListener("change", function() {
-            loadSurah(this.value);
-        });
-
-        loadSurahs();
-    </script>
+    <div id="quran-container">
+        <p>تکایە چاوەڕێ بکە... بار دەکرێت</p>
+    </div>
 </body>
 </html>
