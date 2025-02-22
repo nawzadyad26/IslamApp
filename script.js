@@ -1,21 +1,56 @@
-// Quran-Daten aus quran.json laden und anzeigen
-fetch("quran.json")
-    .then(response => response.json())
-    .then(data => {
-        const quranContainer = document.getElementById("quran-container");
-        quranContainer.innerHTML = ""; // Vorherigen Text entfernen
+// Quran-Daten laden
+async function ladeQuran() {
+    try {
+        const response = await fetch('quran.json');
+        const data = await response.json();
+        zeigeSuren(data.suras);
+    } catch (error) {
+        console.error("Fehler beim Laden des Quran:", error);
+    }
+}
 
-        data.forEach(surah => {
-            const surahElement = document.createElement("div");
-            surahElement.innerHTML = `<h2>${surah.surah_number}. ${surah.surah_name}</h2>`;
-            
-            surah.ayahs.forEach(ayah => {
-                const ayahElement = document.createElement("p");
-                ayahElement.innerHTML = `<strong>${ayah.ayah_number}.</strong> ${ayah.text}`;
-                surahElement.appendChild(ayahElement);
-            });
+// Suren in die Auswahlbox laden
+function zeigeSuren(suren) {
+    const suraAuswahl = document.getElementById('sura-auswahl');
+    suraAuswahl.innerHTML = '';
 
-            quranContainer.appendChild(surahElement);
-        });
-    })
-    .catch(error => console.error("Fehler beim Laden des Korans:", error));
+    suren.forEach(sura => {
+        const option = document.createElement('option');
+        option.value = sura.nummer;
+        option.textContent = `${sura.nummer}. ${sura.name} (${sura.transliteration})`;
+        suraAuswahl.appendChild(option);
+    });
+
+    // Zeige die erste Sure standardmäßig
+    zeigeSura(suren[0]);
+}
+
+// Eine Sure anzeigen
+function zeigeSura(sura) {
+    const suraName = document.getElementById('sura-name');
+    const verseContainer = document.getElementById('verse-container');
+
+    suraName.textContent = `${sura.nummer}. ${sura.name} - ${sura.transliteration}`;
+    verseContainer.innerHTML = '';
+
+    sura.verse.forEach(vers => {
+        const verseElement = document.createElement('p');
+        verseElement.innerHTML = `<strong>${vers.nummer}</strong> ${vers.arabisch}<br><em>${vers.kurdisch}</em>`;
+        verseContainer.appendChild(verseElement);
+    });
+}
+
+// Eventlistener für Suren-Auswahl
+document.getElementById('sura-auswahl').addEventListener('change', async function () {
+    const response = await fetch('quran.json');
+    const data = await response.json();
+    const gewaehlteSuraNummer = parseInt(this.value);
+    const gewaehlteSura = data.suras.find(sura => sura.nummer === gewaehlteSuraNummer);
+    
+    if (gewaehlteSura) {
+        zeigeSura(gewaehlteSura);
+    }
+});
+
+// Lade den Quran beim Start
+ladeQuran();
