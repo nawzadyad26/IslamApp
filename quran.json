@@ -4,16 +4,16 @@
             "name": "الفاتحة",
             "translation": "Eröffnung",
             "verses": [
-                { "number": 1, "text": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", "translation": "Im Namen Allahs, des Allerbarmers, des Barmherzigen." },
-                { "number": 2, "text": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", "translation": "Alles Lob gehört Allah, dem Herrn der Welten," }
+                { "number": 1, "text": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", "translation": "بەناوی خوای بەخشندەی میهرەبان" },
+                { "number": 2, "text": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", "translation": "سوپاس بۆ خوا، پەرۆردەگاری جیهانیان" }
             ]
         },
         {
             "name": "البقرة",
             "translation": "Die Kuh",
             "verses": [
-                { "number": 1, "text": "الم", "translation": "Alif-Lam-Mim." },
-                { "number": 2, "text": "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِلْمُتَّقِينَ", "translation": "Dies ist das Buch, an dem kein Zweifel ist. Eine Rechtleitung für die Gottesfürchtigen," }
+                { "number": 1, "text": "الم", "translation": "ئەلێف لام میم" },
+                { "number": 2, "text": "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِلْمُتَّقِينَ", "translation": "ئەم کەتابە، بێگومان ڕێنموونە بۆ پارساکاران" }
             ]
         }
     ]
