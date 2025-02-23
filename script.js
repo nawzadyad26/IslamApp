@@ -1,52 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const surahSelect = document.getElementById("surahSelect");
-    const surahName = document.getElementById("surahName");
-    const versesContainer = document.getElementById("verses");
-    const quranSection = document.getElementById("quranSection");
-
-    const apiURL = "https://api.alquran.cloud/v1/quran/ku.mokhtarsaeedraman";
-
-    fetch(apiURL)
-        .then(response => response.json())
-        .then(data => {
-            if (!data || !data.data || !data.data.surahs) {
-                console.error("Fehler beim Laden der API-Daten.");
-                return;
-            }
-
-            let surahs = data.data.surahs;
-
-            surahs.forEach(surah => {
-                let option = document.createElement("option");
-                option.value = surah.number;
-                option.textContent = `سورة ${surah.englishName} - ${surah.name}`;
-                surahSelect.appendChild(option);
-            });
-
-            loadSurah(1, surahs);
-
-            surahSelect.addEventListener("change", function () {
-                loadSurah(this.value, surahs);
-            });
-
-        })
-        .catch(error => console.error("Fehler beim Laden der API:", error));
-
-    function loadSurah(surahNumber, surahs) {
-        let surah = surahs.find(s => s.number == surahNumber);
-        if (!surah) return;
-
-        surahName.textContent = `📖 سورة ${surah.englishName} - ${surah.name}`;
-        versesContainer.innerHTML = "";
-
-        surah.ayahs.forEach(ayah => {
-            let p = document.createElement("p");
-            p.textContent = `${ayah.numberInSurah}. ${ayah.text}`;
-            versesContainer.appendChild(p);
-        });
-    }
+    loadSurahList();
 });
 
+function showHome() {
+    document.getElementById("homeSection").style.display = "block";
+    document.getElementById("quranSection").style.display = "none";
+}
+
 function showQuran() {
-    document.getElementById("quranSection").classList.remove("hidden");
+    document.getElementById("homeSection").style.display = "none";
+    document.getElementById("quranSection").style.display = "block";
+}
+
+async function loadSurahList() {
+    const response = await fetch("quran.json");
+    const quranData = await response.json();
+    const surahSelect = document.getElementById("surahSelect");
+
+    quranData.forEach((surah, index) => {
+        let option = document.createElement("option");
+        option.value = index;
+        option.textContent = surah.name;
+        surahSelect.appendChild(option);
+    });
+}
+
+async function loadSurah() {
+    const response = await fetch("quran.json");
+    const quranData = await response.json();
+    const surahSelect = document.getElementById("surahSelect");
+    const selectedIndex = surahSelect.value;
+    const versesDiv = document.getElementById("verses");
+
+    if (selectedIndex === "") {
+        versesDiv.innerHTML = "";
+        return;
+    }
+
+    let surah = quranData[selectedIndex];
+    versesDiv.innerHTML = `<h2>${surah.name}</h2>`;
+    surah.verses.forEach((ayah, index) => {
+        versesDiv.innerHTML += `<p><strong>${index + 1}.</strong> ${ayah}</p>`;
+    });
 }
