@@ -3,43 +3,42 @@ fetch('quran.json')
     .then(data => {
         const surahSelect = document.getElementById('surahSelect');
 
-        // Überprüfen, ob Daten geladen wurden
-        if (!data.surahs) {
-            console.error("Fehler: Keine Suren-Daten gefunden.");
-            return;
-        }
-
         // Dropdown-Menü mit Suren füllen
-        data.surahs.forEach((surah, index) => {
+        data.forEach((surah, index) => {
             let option = document.createElement('option');
             option.value = index;
-            option.textContent = `${index + 1}. ${surah.name}`;
+            option.textContent = surah.name;
             surahSelect.appendChild(option);
         });
 
-        // Standardmäßig erste Sure laden
+        // Standardmäßig die erste Sure laden
         showSurah(0, data);
     })
     .catch(error => console.error("Fehler beim Laden des Quran:", error));
 
 function showSurah(index, data) {
-    const surahContainer = document.getElementById('surahContainer');
-    surahContainer.innerHTML = '';
+    const surahContainer = document.getElementById('verses');
+    surahContainer.innerHTML = '';  // Vorherige Verse löschen
 
-    let surah = data.surahs[index];
+    let surah = data[index];  // Surah anhand des Index holen
 
-    surah.ayahs.forEach(ayah => {
-        let ayahElement = document.createElement('p');
-        ayahElement.innerHTML = `<strong>${ayah.number}</strong> ${ayah.text}`;
-        surahContainer.appendChild(ayahElement);
+    // Surah-Name anzeigen
+    document.getElementById('surahName').textContent = surah.name;
+
+    // Alle Verse der Surah anzeigen
+    surah.verses.forEach((verse, i) => {
+        let verseElement = document.createElement('p');
+        verseElement.innerHTML = `<strong>${i + 1}.</strong><br><span dir="rtl">${verse.arabic}</span><br><em>${verse.translation}</em>`;
+        surahContainer.appendChild(verseElement);
     });
 }
 
-// Event Listener für Dropdown-Menü
+// Event Listener für das Dropdown-Menü
 document.getElementById('surahSelect').addEventListener('change', function () {
     fetch('quran.json')
         .then(response => response.json())
         .then(data => {
             showSurah(this.value, data);
-        });
+        })
+        .catch(error => console.error("Fehler beim Laden der Surah:", error));
 });
