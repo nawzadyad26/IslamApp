@@ -1,55 +1,45 @@
-const quranData = [
-    {
-        "name": "الفاتحة",
-        "verses": [
-            "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
-            "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ",
-            "ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-            "مَٰلِكِ يَوْمِ ٱلدِّينِ",
-            "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
-            "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ",
-            "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ"
-        ]
-    },
-    {
-        "name": "البقرة",
-        "verses": [
-            "الم",
-            "ذَٰلِكَ ٱلْكِتَٰبُ لَا رَيْبَ فِيهِ هُدًۭى لِّلْمُتَّقِينَ",
-            "ٱلَّذِينَ يُؤْمِنُونَ بِٱلْغَيْبِ وَيُقِيمُونَ ٱلصَّلَوٰةَ وَمِمَّا رَزَقْنَٰهُمْ يُنفِقُونَ",
-            "وَٱلَّذِينَ يُؤْمِنُونَ بِمَآ أُنزِلَ إِلَيْكَ وَمَآ أُنزِلَ مِن قَبْلِكَ وَبِٱلءَاخِرَةِ هُمْ يُوقِنُونَ",
-            "أُو۟لَٰئِكَ عَلَىٰ هُدًۭى مِّن رَّبِّهِمْ ۖ وَأُو۟لَٰئِكَ هُمُ ٱلْمُفْلِحُونَ"
-        ]
-    }
-];
+fetch('quran.json')
+    .then(response => response.json())
+    .then(data => {
+        const surahSelect = document.getElementById('surahSelect');
 
-function loadSurahList() {
-    const surahSelect = document.getElementById("surahSelect");
-    quranData.forEach((surah, index) => {
-        let option = document.createElement("option");
-        option.value = index;
-        option.textContent = surah.name;
-        surahSelect.appendChild(option);
+        // Überprüfen, ob Daten geladen wurden
+        if (!data.surahs) {
+            console.error("Fehler: Keine Suren-Daten gefunden.");
+            return;
+        }
+
+        // Dropdown-Menü mit Suren füllen
+        data.surahs.forEach((surah, index) => {
+            let option = document.createElement('option');
+            option.value = index;
+            option.textContent = `${index + 1}. ${surah.name}`;
+            surahSelect.appendChild(option);
+        });
+
+        // Standardmäßig erste Sure laden
+        showSurah(0, data);
+    })
+    .catch(error => console.error("Fehler beim Laden des Quran:", error));
+
+function showSurah(index, data) {
+    const surahContainer = document.getElementById('surahContainer');
+    surahContainer.innerHTML = '';
+
+    let surah = data.surahs[index];
+
+    surah.ayahs.forEach(ayah => {
+        let ayahElement = document.createElement('p');
+        ayahElement.innerHTML = `<strong>${ayah.number}</strong> ${ayah.text}`;
+        surahContainer.appendChild(ayahElement);
     });
 }
 
-function loadSurah() {
-    const surahSelect = document.getElementById("surahSelect");
-    const selectedIndex = surahSelect.value;
-    const versesDiv = document.getElementById("verses");
-
-    if (selectedIndex === "") {
-        versesDiv.innerHTML = "";
-        return;
-    }
-
-    let surah = quranData[selectedIndex];
-    versesDiv.innerHTML = `<h2>${surah.name}</h2>`;
-    surah.verses.forEach((ayah, index) => {
-        versesDiv.innerHTML += `<p><strong>${index + 1}.</strong> ${ayah}</p>`;
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    loadSurahList();
+// Event Listener für Dropdown-Menü
+document.getElementById('surahSelect').addEventListener('change', function () {
+    fetch('quran.json')
+        .then(response => response.json())
+        .then(data => {
+            showSurah(this.value, data);
+        });
 });
