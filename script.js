@@ -1,22 +1,30 @@
-document.addEventListener("DOMContentLoaded", function () {
-    loadSurahList();
-});
+const quranData = [
+    {
+        "name": "الفاتحة",
+        "verses": [
+            "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+            "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ",
+            "ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+            "مَٰلِكِ يَوْمِ ٱلدِّينِ",
+            "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+            "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ",
+            "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ"
+        ]
+    },
+    {
+        "name": "البقرة",
+        "verses": [
+            "الم",
+            "ذَٰلِكَ ٱلْكِتَٰبُ لَا رَيْبَ فِيهِ هُدًۭى لِّلْمُتَّقِينَ",
+            "ٱلَّذِينَ يُؤْمِنُونَ بِٱلْغَيْبِ وَيُقِيمُونَ ٱلصَّلَوٰةَ وَمِمَّا رَزَقْنَٰهُمْ يُنفِقُونَ",
+            "وَٱلَّذِينَ يُؤْمِنُونَ بِمَآ أُنزِلَ إِلَيْكَ وَمَآ أُنزِلَ مِن قَبْلِكَ وَبِٱلءَاخِرَةِ هُمْ يُوقِنُونَ",
+            "أُو۟لَٰئِكَ عَلَىٰ هُدًۭى مِّن رَّبِّهِمْ ۖ وَأُو۟لَٰئِكَ هُمُ ٱلْمُفْلِحُونَ"
+        ]
+    }
+];
 
-function showHome() {
-    document.getElementById("homeSection").style.display = "block";
-    document.getElementById("quranSection").style.display = "none";
-}
-
-function showQuran() {
-    document.getElementById("homeSection").style.display = "none";
-    document.getElementById("quranSection").style.display = "block";
-}
-
-async function loadSurahList() {
-    const response = await fetch("quran.json");
-    const quranData = await response.json();
+function loadSurahList() {
     const surahSelect = document.getElementById("surahSelect");
-
     quranData.forEach((surah, index) => {
         let option = document.createElement("option");
         option.value = index;
@@ -25,9 +33,7 @@ async function loadSurahList() {
     });
 }
 
-async function loadSurah() {
-    const response = await fetch("quran.json");
-    const quranData = await response.json();
+function loadSurah() {
     const surahSelect = document.getElementById("surahSelect");
     const selectedIndex = surahSelect.value;
     const versesDiv = document.getElementById("verses");
@@ -43,3 +49,7 @@ async function loadSurah() {
         versesDiv.innerHTML += `<p><strong>${index + 1}.</strong> ${ayah}</p>`;
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    loadSurahList();
+});
