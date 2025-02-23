@@ -1,95 +1,64 @@
 /* Allgemeine Stile */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f3f3f3;
     text-align: center;
-    direction: rtl; /* Für kurdische (Sorani) Schrift */
+    background-color: #6F7673;
+    color: white;
     margin: 0;
     padding: 0;
 }
 
 /* Navigation */
 nav {
-    background-color: #008080;
+    background-color: #333;
     padding: 10px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
-    margin: 5px;
-    display: inline-block;
+    margin: 10px;
+    font-size: 18px;
 }
 
-nav a:hover {
-    background-color: #006666;
-    border-radius: 5px;
+/* Hauptüberschrift */
+h1 {
+    margin-top: 20px;
+    font-size: 24px;
 }
 
-/* Überschriften und Absätze */
-h1, h2, h3 {
-    color: #333;
-}
-
+/* Allgemeiner Text */
 p {
-    color: #555;
     font-size: 18px;
 }
 
-/* Buttons */
-button {
-    background-color: #008080;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 20px;
-    font-size: 18px;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #006666;
-}
-
-/* Versteckte Sektionen */
-.hidden {
-    display: none;
-}
-
-/* Quran-Bereich */
-#quranSection {
+/* Container für den Koran */
+#quranContainer {
     margin-top: 20px;
     padding: 20px;
-}
-
-#verses {
-    background-color: white;
-    padding: 20px;
-    margin: 20px auto;
-    width: 80%;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: right;
 }
 
-#verses p {
-    font-size: 20px;
-    line-height: 1.8;
-    color: #222;
-}
-
-/* Dropdown für Surenauswahl */
+/* Dropdown-Menü für Suren */
 select {
-    padding: 10px;
-    font-size: 18px;
-    margin-top: 10px;
+    font-size: 16px;
+    padding: 5px;
     border-radius: 5px;
-    border: 1px solid #ccc;
 }
 
-select:focus {
-    outline: none;
-    border-color: #008080;
+/* Anzeige der Verse */
+#verses {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
