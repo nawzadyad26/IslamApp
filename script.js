@@ -3,15 +3,20 @@ fetch('quran.json')
     .then(data => {
         const surahSelect = document.getElementById('surahSelect');
 
-        // Suren in das Dropdown-Menü einfügen
+        // Dropdown-Menü mit Suren füllen
         data.forEach((surah, index) => {
             let option = document.createElement('option');
             option.value = index;
-            option.textContent = surah.name;  // Name der Surah einfügen
+            option.textContent = `${surah.name}`;
             surahSelect.appendChild(option);
         });
 
-        // Standardmäßig die erste Surah laden
+        // Wenn eine Surah ausgewählt wird, diese anzeigen
+        surahSelect.addEventListener('change', function() {
+            showSurah(this.value, data);
+        });
+
+        // Standardmäßig die erste Surah anzeigen
         showSurah(0, data);
     })
     .catch(error => console.error("Fehler beim Laden des Quran:", error));
@@ -20,12 +25,11 @@ function showSurah(index, data) {
     const versesContainer = document.getElementById('verses');
     versesContainer.innerHTML = '';  // Vorherige Verse löschen
 
-    let surah = data[index];  // Surah anhand des Index holen
+    const surah = data[index];  // Holen der Surah basierend auf dem Index
+    const surahName = document.getElementById('surahName');
+    surahName.textContent = surah.name;  // Surah Name setzen
 
-    // Surah-Name anzeigen
-    document.getElementById('surahName').textContent = surah.name;
-
-    // Alle Verse der Surah anzeigen
+    // Alle Verse der ausgewählten Surah anzeigen
     surah.verses.forEach((verse, i) => {
         let verseElement = document.createElement('p');
         verseElement.innerHTML = `
@@ -36,13 +40,3 @@ function showSurah(index, data) {
         versesContainer.appendChild(verseElement);
     });
 }
-
-// Event Listener für das Dropdown-Menü
-document.getElementById('surahSelect').addEventListener('change', function () {
-    fetch('quran.json')
-        .then(response => response.json())
-        .then(data => {
-            showSurah(this.value, data);
-        })
-        .catch(error => console.error("Fehler beim Laden der Surah:", error));
-});
