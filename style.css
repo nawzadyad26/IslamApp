@@ -2,20 +2,20 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #6F7673;
-    color: white;
+    background-color: #f0f0f0; /* Heller Hintergrund */
+    color: #333; /* Dunkle Textfarbe */
     margin: 0;
     padding: 0;
 }
 
 /* Navigation */
 nav {
-    background-color: #333;
+    background-color: #333; /* Dunkler Hintergrund für die Navigation */
     padding: 10px;
 }
 
 nav a {
-    color: white;
+    color: white; /* Weiße Textfarbe für Links */
     text-decoration: none;
     margin: 10px;
     font-size: 18px;
@@ -24,41 +24,70 @@ nav a {
 /* Hauptüberschrift */
 h1 {
     margin-top: 20px;
+    font-size: 28px;
+    color: #4CAF50; /* Grüne Farbe für den Titel */
+}
+
+/* Surah Name */
+h2 {
     font-size: 24px;
+    color: #00796B; /* Dunkelgrün für Surah-Name */
+    margin-top: 20px;
 }
 
 /* Allgemeiner Text */
-p {
+p, em {
     font-size: 18px;
+    color: #555; /* Helle Grautöne für allgemeinen Text */
+    margin: 10px 0;
 }
 
 /* Container für den Koran */
 #quranContainer {
     margin-top: 20px;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3); /* Leicht transparentes Schwarz */
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schatten für den Container */
 }
 
 /* Dropdown-Menü für Suren */
 select {
     font-size: 16px;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
+    background-color: #fff; /* Weißer Hintergrund für das Dropdown */
+    border: 1px solid #ddd; /* Graue Randfarbe */
+    margin-top: 10px;
 }
 
 /* Anzeige der Verse */
 #verses {
-    margin-top: 10px;
-    font-size: 20px;
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.6; /* Zeilenabstand für besseres Lesen */
+}
+
+#verses p {
+    margin-bottom: 15px;
+}
+
+/* RTL (Rechts-nach-links) für arabischen Text */
+span[dir="rtl"] {
+    display: block;
+    text-align: right;
+    font-family: 'Amiri', serif; /* Schriftart für arabischen Text */
+    font-size: 22px;
+    margin-bottom: 10px;
 }
 
 /* Footer */
 footer {
-    background-color: #333;
+    background-color: #333; /* Dunkler Hintergrund für den Footer */
     color: white;
     padding: 10px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
+    text-align: center;
 }
