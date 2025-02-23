@@ -2,8 +2,8 @@ fetch('quran.json')
     .then(response => response.json())
     .then(data => {
         const surahSelect = document.getElementById('surahSelect');
-        
-        // Dropdown-Menü mit Suren füllen
+
+        // Suren in das Dropdown-Menü einfügen
         data.forEach((surah, index) => {
             let option = document.createElement('option');
             option.value = index;
@@ -11,14 +11,14 @@ fetch('quran.json')
             surahSelect.appendChild(option);
         });
 
-        // Standardmäßig erste Surah laden
+        // Standardmäßig die erste Surah laden
         showSurah(0, data);
     })
     .catch(error => console.error("Fehler beim Laden des Quran:", error));
 
 function showSurah(index, data) {
-    const surahContainer = document.getElementById('verses');
-    surahContainer.innerHTML = '';  // Vorherige Verse löschen
+    const versesContainer = document.getElementById('verses');
+    versesContainer.innerHTML = '';  // Vorherige Verse löschen
 
     let surah = data[index];  // Surah anhand des Index holen
 
@@ -28,8 +28,12 @@ function showSurah(index, data) {
     // Alle Verse der Surah anzeigen
     surah.verses.forEach((verse, i) => {
         let verseElement = document.createElement('p');
-        verseElement.innerHTML = `<strong>Vers ${i + 1}:</strong><br><span dir="rtl">${verse.arabic}</span><br><em>${verse.translation}</em>`;
-        surahContainer.appendChild(verseElement);
+        verseElement.innerHTML = `
+            <strong>آیه ${i + 1}:</strong><br>
+            <span dir="rtl">${verse.arabic}</span><br>
+            <em>${verse.translation}</em>
+        `;
+        versesContainer.appendChild(verseElement);
     });
 }
 
