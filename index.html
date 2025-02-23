@@ -3,28 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📖 قورئانی پیرۆز</title>
+    <title>قورئانی پیرۆز</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <nav>
-        <a href="#">🏠 سەرەکی</a>
-        <a href="#" id="quranLink">📖 قورئان</a>
-        <a href="#">🕋 بانگەشە</a>
-        <a href="#">⚙️ ڕێکخستن</a>
+        <a href="#" onclick="showHome()">🏠 سەرەکی</a>
+        <a href="#" onclick="showQuran()">📖 قورئان</a>
+        <a href="#">🕋 نوێژ</a>
+        <a href="#">⚙️ ڕێکخستنەکان</a>
     </nav>
 
-    <main id="home">
-        <h1>بەخێربێیت بۆ ئەپلیکەیشنی ئیسلام</h1>
-        <p>ئەم ئەپە زانیارییە ئیسلامییەکان پێشکەش دەکات.</p>
-        <button onclick="showQuran()">📖 قورئان بخوێنەوە</button>
-    </main>
+    <section id="homeSection">
+        <h1>بەخێربێیت بۆ قورئانی پیرۆز</h1>
+        <p>ئەم ئەپە قورئانی پیرۆز بە کوردی (سۆرانی) پێشکەش دەکات.</p>
+    </section>
 
     <section id="quranSection" class="hidden">
         <h2>📖 قورئانی پیرۆز</h2>
-        <label for="surahSelect">سورەکەت هەڵبژێرە:</label>
-        <select id="surahSelect"></select>
-        <h3 id="surahName"></h3>
+        <label for="surahSelect">سورەکە هەلبژێرە:</label>
+        <select id="surahSelect" onchange="loadSurah()">
+            <option value="">- هەڵبژاردن -</option>
+        </select>
         <div id="verses"></div>
     </section>
 
