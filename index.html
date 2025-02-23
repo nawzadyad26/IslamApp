@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ئەپلیکەیشنی ئیسلام</title>
+    <title>📖 قورئانی پیرۆز</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav>
-        <a href="index.html">🏠 سەرەکی</a>
-        <a href="quran.html">📖 قورئان</a>
-        <a href="#">🕋 بانگ و دووعا</a>
-        <a href="#">⚙️ ڕێکخستنەکان</a>
+        <a href="#">🏠 سەرەکی</a>
+        <a href="#" id="quranLink">📖 قورئان</a>
+        <a href="#">🕋 بانگەشە</a>
+        <a href="#">⚙️ ڕێکخستن</a>
     </nav>
 
-    <main>
+    <main id="home">
         <h1>بەخێربێیت بۆ ئەپلیکەیشنی ئیسلام</h1>
         <p>ئەم ئەپە زانیارییە ئیسلامییەکان پێشکەش دەکات.</p>
-        <button onclick="alert('بسم الله!')">دەستپێبکە</button>
+        <button onclick="showQuran()">📖 قورئان بخوێنەوە</button>
     </main>
 
+    <section id="quranSection" class="hidden">
+        <h2>📖 قورئانی پیرۆز</h2>
+        <label for="surahSelect">سورەکەت هەڵبژێرە:</label>
+        <select id="surahSelect"></select>
+        <h3 id="surahName"></h3>
+        <div id="verses"></div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
