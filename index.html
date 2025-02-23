@@ -3,27 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📖 قورئان</title>
+    <title>ئەپلیکەیشنی ئیسلام</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav>
-        <a href="index.html">🏠 سەرەکی</a>
+        <a href="#">🏠 ماڵەوە</a>
         <a href="quran.html">📖 قورئان</a>
-        <a href="#">🕋 بانگ و دووعا</a>
-        <a href="#">⚙️ ڕێکخستنەکان</a>
+        <a href="#">🕋 بانگەشە</a>
+        <a href="#">⚙️ ڕێکخستن</a>
     </nav>
 
-    <main>
-        <h1>📖 قورئان</h1>
-        
-        <label for="surahSelect">سورەکە هەڵبژێرە:</label>
-        <select id="surahSelect"></select>
-        
-        <h2 id="surahName"></h2>
+    <h1>بِسْمِ ٱللَّٰهِ</h1>
+    <p>بەخێربێیت بۆ ئەپلیکەیشنی ئیسلام. خودای گەورە پێرخوش بیت.</p>
+
+    <div id="quranContainer">
+        <h2>قورئان</h2>
+        <select id="surahSelect" onchange="loadSurah()">
+            <option value="">سورەکە هەلبژێرە</option>
+        </select>
         <div id="verses"></div>
-    </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
